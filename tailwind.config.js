@@ -13,6 +13,15 @@ export default {
         "semi-white": "#EFF1FA",
         "dark-blu": "#161932",
       },
+      width: {
+        75: "18.75rem",
+      },
+      height: {
+        75: "18.75rem",
+      },
+      backgroundImage: {
+        session: "linear-gradient(315deg, #2E325A 0%, #0E112A 100%)",
+      },
     },
   },
   plugins: [],
