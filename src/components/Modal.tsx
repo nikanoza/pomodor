@@ -1,11 +1,21 @@
 import { useRef } from "react";
-import { Close, DownArrow, UpArrow } from "../svg";
+import { Check, Close, DownArrow, UpArrow } from "../svg";
+import { SettingsType, SettingsTypeKey } from "../types";
 
 type PropsType = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  updateSettings: <T extends SettingsTypeKey>(
+    property: T,
+    value: SettingsType[T]
+  ) => void;
+  settings: SettingsType;
 };
 
-const Modal: React.FC<PropsType> = ({ setShowModal }) => {
+const Modal: React.FC<PropsType> = ({
+  setShowModal,
+  updateSettings,
+  settings,
+}) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const closeHandler: React.MouseEventHandler<HTMLDivElement> = (event) => {
@@ -35,10 +45,22 @@ const Modal: React.FC<PropsType> = ({ setShowModal }) => {
                 pomodoro
               </h3>
               <div className="w-[140px] h-12 flex justify-between items-center px-4 rounded-[10px] bg-semi-white">
-                <h3 className="text-sm text-semi-blu font-bold">25</h3>
+                <h3 className="text-sm text-semi-blu font-bold">
+                  {settings.pomodoro}
+                </h3>
                 <div className="flex flex-col gap-2 mt-2">
-                  <UpArrow />
-                  <DownArrow />
+                  <UpArrow
+                    onClick={() => {
+                      if (settings.pomodoro < 60)
+                        updateSettings("pomodoro", settings.pomodoro + 1);
+                    }}
+                  />
+                  <DownArrow
+                    onClick={() => {
+                      if (settings.pomodoro > 25)
+                        updateSettings("pomodoro", settings.pomodoro - 1);
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -47,10 +69,22 @@ const Modal: React.FC<PropsType> = ({ setShowModal }) => {
                 short break
               </h3>
               <div className="w-[140px] h-12 flex justify-between items-center px-4 rounded-[10px] bg-semi-white">
-                <h3 className="text-sm text-semi-blu font-bold">5</h3>
+                <h3 className="text-sm text-semi-blu font-bold">
+                  {settings.shortBreak}
+                </h3>
                 <div className="flex flex-col gap-2 mt-2">
-                  <UpArrow />
-                  <DownArrow />
+                  <UpArrow
+                    onClick={() => {
+                      if (settings.shortBreak < 10)
+                        updateSettings("shortBreak", settings.shortBreak + 1);
+                    }}
+                  />
+                  <DownArrow
+                    onClick={() => {
+                      if (settings.shortBreak > 5)
+                        updateSettings("shortBreak", settings.shortBreak - 1);
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -59,10 +93,22 @@ const Modal: React.FC<PropsType> = ({ setShowModal }) => {
                 long break
               </h3>
               <div className="w-[140px] h-12 flex justify-between items-center px-4 rounded-[10px] bg-semi-white">
-                <h3 className="text-sm text-semi-blu font-bold">15</h3>
+                <h3 className="text-sm text-semi-blu font-bold">
+                  {settings.longBreak}
+                </h3>
                 <div className="flex flex-col gap-2 mt-2">
-                  <UpArrow />
-                  <DownArrow />
+                  <UpArrow
+                    onClick={() => {
+                      if (settings.longBreak < 15)
+                        updateSettings("longBreak", settings.longBreak + 1);
+                    }}
+                  />
+                  <DownArrow
+                    onClick={() => {
+                      if (settings.longBreak > 10)
+                        updateSettings("longBreak", settings.longBreak - 1);
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -73,13 +119,34 @@ const Modal: React.FC<PropsType> = ({ setShowModal }) => {
               FONT
             </h3>
             <div className="flex items-center gap-4 mt-4">
-              <button className="border-none w-10 h-10 rounded-full text-base text-semi-blu font-base text-opacity-70 bg-semi-white flex items-center justify-center kumbh">
+              <button
+                onClick={() => updateSettings("font", "kumbh")}
+                className={`border-none w-10 h-10 rounded-full text-base  font-base flex items-center justify-center kumbh ${
+                  settings.font === "kumbh"
+                    ? "text-light bg-dark-blu"
+                    : "text-semi-blu text-opacity-70 bg-semi-white"
+                }`}
+              >
                 Aa
               </button>
-              <button className="border-none w-10 h-10 rounded-full text-base text-semi-blu font-base text-opacity-70 bg-semi-white flex items-center justify-center roboto">
+              <button
+                onClick={() => updateSettings("font", "roboto")}
+                className={`border-none w-10 h-10 rounded-full text-base  font-base flex items-center justify-center roboto ${
+                  settings.font === "roboto"
+                    ? "text-light bg-dark-blu"
+                    : "text-semi-blu text-opacity-70 bg-semi-white"
+                }`}
+              >
                 Aa
               </button>
-              <button className="border-none w-10 h-10 rounded-full text-base text-semi-blu font-base text-opacity-70 bg-semi-white flex items-center justify-center mono">
+              <button
+                onClick={() => updateSettings("font", "mono")}
+                className={`border-none w-10 h-10 rounded-full text-base  font-base flex items-center justify-center mono ${
+                  settings.font === "mono"
+                    ? "text-light bg-dark-blu"
+                    : "text-semi-blu text-opacity-70 bg-semi-white"
+                }`}
+              >
                 Aa
               </button>
             </div>
@@ -90,14 +157,31 @@ const Modal: React.FC<PropsType> = ({ setShowModal }) => {
               COLOR
             </h3>
             <div className="flex items-center gap-4 mt-4">
-              <button className="border-none w-10 h-10 rounded-full  bg-semi-red flex items-center justify-center kumbh"></button>
-              <button className="border-none w-10 h-10 rounded-full  bg-sky flex items-center justify-center roboto"></button>
-              <button className="border-none w-10 h-10 rounded-full  bg-violet flex items-center justify-center mono"></button>
+              <button
+                className="border-none w-10 h-10 rounded-full  bg-semi-red flex items-center justify-center"
+                onClick={() => updateSettings("color", "semi-red")}
+              >
+                {settings.color === "semi-red" ? <Check /> : null}
+              </button>
+              <button
+                className="border-none w-10 h-10 rounded-full  bg-sky flex items-center justify-center"
+                onClick={() => updateSettings("color", "sky")}
+              >
+                {settings.color === "sky" ? <Check /> : null}
+              </button>
+              <button
+                className="border-none w-10 h-10 rounded-full  bg-violet flex items-center justify-center"
+                onClick={() => updateSettings("color", "violet")}
+              >
+                {settings.color === "violet" ? <Check /> : null}
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <button className="-mt-[26px] border-none px-12 py-4 text-xs text-light font-bold bg-semi-red rounded-[26.5px]">
+      <button
+        className={`-mt-[26px] border-none px-12 py-4 text-xs text-light font-bold bg-semi-red rounded-[26.5px] text-${settings.font}`}
+      >
         Apply
       </button>
     </div>
