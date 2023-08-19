@@ -28,7 +28,7 @@ function App() {
       className={`w-full h-full flex flex-col items-center bg-semi-blu pt-8 pb-12 ${settings.font}`}
     >
       <Logo />
-      <Panel color={settings.color} session={session} />
+      <Panel color={settings.color} session={session} setSession={setSession} />
       <Session settings={settings} session={session} />
       <div className="mt-auto">
         <Settings onClick={() => setShowModal(true)} />

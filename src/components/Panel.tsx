@@ -3,9 +3,10 @@ import { SessionType } from "../types";
 type PropsType = {
   color: "semi-red" | "sky" | "violet";
   session: SessionType;
+  setSession: React.Dispatch<React.SetStateAction<SessionType>>;
 };
 
-const Panel: React.FC<PropsType> = ({ color, session }) => {
+const Panel: React.FC<PropsType> = ({ color, session, setSession }) => {
   return (
     <div className="p-2 flex items-center rounded-[31.5px] mt-11 bg-dark-blu">
       <button
@@ -14,6 +15,7 @@ const Panel: React.FC<PropsType> = ({ color, session }) => {
             ? color + " text-semi-blu"
             : "transparent text-semi-grey text-opacity-40"
         } rounded-[26.5px]`}
+        onClick={() => setSession("pomodoro")}
       >
         pomodoro
       </button>
@@ -23,6 +25,7 @@ const Panel: React.FC<PropsType> = ({ color, session }) => {
             ? color + " text-semi-blu"
             : "transparent text-semi-grey text-opacity-40"
         } rounded-[26.5px]`}
+        onClick={() => setSession("shortBreak")}
       >
         short break
       </button>
@@ -32,6 +35,7 @@ const Panel: React.FC<PropsType> = ({ color, session }) => {
             ? color + " text-semi-blu"
             : "transparent text-semi-grey text-opacity-40"
         } rounded-[26.5px]`}
+        onClick={() => setSession("longBreak")}
       >
         long break
       </button>
