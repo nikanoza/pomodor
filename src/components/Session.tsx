@@ -1,4 +1,11 @@
-const Session = () => {
+import { SessionType, SettingsType } from "../types";
+
+type PropsType = {
+  settings: SettingsType;
+  session: SessionType;
+};
+
+const Session: React.FC<PropsType> = ({ settings, session }) => {
   return (
     <div className="mt-12 w-75 h-75 rounded-full bg-session flex justify-center items-center">
       <div className="w-[267.805px] h-[267.805px] rounded-full bg-dark-blu flex justify-center items-center">
