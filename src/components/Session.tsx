@@ -56,20 +56,50 @@ const Session: React.FC<PropsType> = ({ settings, session }) => {
     }
   };
 
+  const calculateDashoffset =
+    753 -
+    (753 * (settings[session] * 60 - times[session])) /
+      (settings[session] * 60);
+
+  const color =
+    settings.color === "semi-red"
+      ? "#F87070"
+      : settings.color === "sky"
+      ? "#70F3F8"
+      : "#D881F8";
+
   return (
-    <div className="mt-12 w-75 h-75 rounded-full bg-session flex justify-center items-center">
-      <div className="w-[267.805px] h-[267.805px] rounded-full bg-dark-blu flex justify-center items-center">
-        <div className="w-[238.049px] h-[238.049px] rounded-full border-[10px] border-semi-red flex flex-col justify-center items-center">
-          <h1 className="text-semi-grey text-[60px] font-bold tracking-[-4px]">
-            {displayTime()}
-          </h1>
-          <button
-            className={`text-semi-grey text-sm font-bold border-none tracking-[13.125px] ${settings.font}`}
-            onClick={intervalStateHandler}
-          >
-            {timer ? "PAUSE" : "PLAY"}
-          </button>
-        </div>
+    <div className="w-[267.805px] h-[267.805px] mt-12 rounded-full bg-dark-blu flex justify-center items-center relative">
+      <svg width="267.805px" height="267.805px" className="absolute -rotate-90">
+        <circle
+          id="circle1"
+          cx="133.9025px"
+          cy="133.9025px"
+          r="120px"
+          fill="transparent"
+          stroke={color}
+          strokeWidth="10px"
+          strokeDasharray="753px"
+          strokeDashoffset={calculateDashoffset}
+        ></circle>
+        <circle
+          id="circle2"
+          cx="133.9025px"
+          cy="133.9025px"
+          r="120px"
+          fill="transparent"
+        ></circle>
+      </svg>
+      <div className="w-[238.049px] h-[238.049px] rounded-full flex flex-col justify-center items-center relative z-10">
+        <h1 className="text-semi-grey text-[60px] font-bold tracking-[-4px]">
+          {displayTime()}
+        </h1>
+        <button
+          className={`text-semi-grey text-sm font-bold border-none tracking-[13.125px] ${settings.font}`}
+          onClick={intervalStateHandler}
+        >
+          {timer ? "PAUSE" : "PLAY"}
+        </button>
       </div>
     </div>
   );
