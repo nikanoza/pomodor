@@ -13,3 +13,9 @@ export interface SettingsType {
 export type SettingsTypeKey = keyof SettingsType;
 
 export type SessionType = "pomodoro" | "longBreak" | "shortBreak";
+
+export type TimeState = {
+  pomodoro: number;
+  longBreak: number;
+  shortBreak: number;
+};
