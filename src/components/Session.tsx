@@ -106,7 +106,7 @@ const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
       : "#D881F8";
 
   return (
-    <div className="w-[267.805px] md:w-[410px] h-[267.805px] md:h-[410px] mt-12 md:mt-28 rounded-full bg-dark-blu flex justify-center items-center relative">
+    <div className="w-[267.805px] md:w-[410px] h-[267.805px] md:h-[410px] my-auto rounded-full shadow-mobile-shadow bg-dark-blu flex justify-center items-center relative">
       <audio src={Voice} className="hidden" ref={audioRef}></audio>
       <svg
         width="267.805px"
@@ -135,7 +135,7 @@ const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
       <svg
         width="410px"
         height="410px"
-        className="absolute -rotate-90 hidden md:block" // Show for tablet only
+        className="absolute -rotate-90 hidden md:block"
       >
         <circle
           id="circle1"
@@ -149,7 +149,7 @@ const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
           strokeDashoffset={calculateDashoffsetTablet}
         ></circle>
         <circle
-          id="circle4"
+          id="circle2"
           cx="205px"
           cy="205px"
           r="185px"
