@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div
-      className={`w-full h-full flex flex-col items-center bg-semi-blu pt-8 md:pt-20 pb-12 md:pb-24  ${settings.font}`}
+      className={`w-full h-full flex flex-col items-center bg-semi-blu pt-8 md:pt-20 pb-12 md:pb-24 ${settings.font}`}
     >
       <Logo />
       <Panel color={settings.color} session={session} setSession={setSession} />

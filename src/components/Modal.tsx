@@ -29,19 +29,19 @@ const Modal: React.FC<PropsType> = ({
       ref={modalRef}
       className="w-screen h-screen absolute top-0 left-0 bg-modal flex flex-col justify-center items-center z-40 px-6"
     >
-      <div className="pt-9 pb-14 w-full bg-light rounded-3xl">
-        <div className="px-6 flex justify-between items-center">
+      <div className="pt-9 pb-14 w-full max-w-[540px] bg-light rounded-3xl">
+        <div className="px-6 md:px-10 flex justify-between items-center">
           <h3 className="text-[28px] text-dark-blu font-bold">Settings</h3>
           <Close onClick={() => setShowModal((state) => !state)} />
         </div>
-        <div className="w-full h-[1px] bg-[#E3E1E1] mt-6"></div>
-        <div className="px-6">
-          <h3 className="mt-6 text-xs text-dark-blu font-bold tracking-[5px] text-center">
+        <div className="w-full h-[1px] bg-[#E3E1E1] mt-6 md:mt-8"></div>
+        <div className="px-6 md:px-10">
+          <h3 className="mt-6 text-xs md:text-sm text-dark-blu font-bold tracking-[5px] text-center">
             TIME (MINUTES)
           </h3>
-          <div className="flex flex-col gap-2 mt-4">
-            <div className=" flex items-center justify-between gap-20">
-              <h3 className="text-xs text-semi-blu font-bold opacity-40">
+          <div className="flex flex-col md:flex-row gap-2 md:gap-5 mt-4 md:mt-6">
+            <div className="flex md:flex-col items-center md:items-start justify-between gap-20 md:gap-2">
+              <h3 className="text-xs md:text-sm text-semi-blu font-bold opacity-40">
                 pomodoro
               </h3>
               <div className="w-[140px] h-12 flex justify-between items-center px-4 rounded-[10px] bg-semi-white">
@@ -64,8 +64,8 @@ const Modal: React.FC<PropsType> = ({
                 </div>
               </div>
             </div>
-            <div className=" flex items-center justify-between gap-20">
-              <h3 className="text-xs text-semi-blu font-bold opacity-40">
+            <div className="flex md:flex-col items-center md:items-start justify-between gap-20 md:gap-2">
+              <h3 className="text-xs md:text-sm text-semi-blu font-bold opacity-40">
                 short break
               </h3>
               <div className="w-[140px] h-12 flex justify-between items-center px-4 rounded-[10px] bg-semi-white">
@@ -88,8 +88,8 @@ const Modal: React.FC<PropsType> = ({
                 </div>
               </div>
             </div>
-            <div className=" flex items-center justify-between gap-20">
-              <h3 className="text-xs text-semi-blu font-bold opacity-40">
+            <div className="flex md:flex-col items-center md:items-start justify-between gap-20 md:gap-2">
+              <h3 className="text-xs md:text-sm text-semi-blu font-bold opacity-40">
                 long break
               </h3>
               <div className="w-[140px] h-12 flex justify-between items-center px-4 rounded-[10px] bg-semi-white">
@@ -114,8 +114,8 @@ const Modal: React.FC<PropsType> = ({
             </div>
           </div>
           <div className="w-full h-[1px] bg-[#E3E1E1] mt-6"></div>
-          <div className="flex flex-col items-center">
-            <h3 className="mt-6 text-xs text-dark-blu font-bold tracking-[5px] text-center">
+          <div className="flex flex-col md:flex-row md:justify-between items-center">
+            <h3 className="mt-6 text-xs md:text-sm text-dark-blu font-bold tracking-[5px] text-center">
               FONT
             </h3>
             <div className="flex items-center gap-4 mt-4">
@@ -152,11 +152,11 @@ const Modal: React.FC<PropsType> = ({
             </div>
           </div>
           <div className="w-full h-[1px] bg-[#E3E1E1] mt-6"></div>
-          <div className="flex flex-col items-center">
-            <h3 className="mt-6 text-xs text-dark-blu font-bold tracking-[5px] text-center">
+          <div className="flex flex-col md:flex-row md:justify-between items-center md:mt-6">
+            <h3 className="mt-6 md:mt-0 text-xs md:text-sm text-dark-blu font-bold tracking-[5px] text-center">
               COLOR
             </h3>
-            <div className="flex items-center gap-4 mt-4">
+            <div className="flex items-center gap-4 mt-4 md:mt-0">
               <button
                 className="border-none w-10 h-10 rounded-full  bg-semi-red flex items-center justify-center"
                 onClick={() => updateSettings("color", "semi-red")}
@@ -181,7 +181,7 @@ const Modal: React.FC<PropsType> = ({
       </div>
       <button
         onClick={() => setShowModal((state) => !state)}
-        className={`-mt-[26px] border-none px-12 py-4 text-xs text-light font-bold bg-semi-red rounded-[26.5px] text-${settings.font}`}
+        className={`-mt-[26px] border-none px-12 py-4 text-xs md:text-base text-light font-bold bg-semi-red rounded-[26.5px] text-${settings.font}`}
       >
         Return
       </button>
