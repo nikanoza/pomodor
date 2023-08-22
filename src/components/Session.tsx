@@ -93,6 +93,10 @@ const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
     753 -
     (753 * (settings[session] * 60 - times[session])) /
       (settings[session] * 60);
+  const calculateDashoffsetTablet =
+    1161 -
+    (1161 * (settings[session] * 60 - times[session])) /
+      (settings[session] * 60);
 
   const color =
     settings.color === "semi-red"
@@ -102,9 +106,13 @@ const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
       : "#D881F8";
 
   return (
-    <div className="w-[267.805px] h-[267.805px] mt-12 rounded-full bg-dark-blu flex justify-center items-center relative">
+    <div className="w-[267.805px] md:w-[410px] h-[267.805px] md:h-[410px] mt-12 md:mt-28 rounded-full bg-dark-blu flex justify-center items-center relative">
       <audio src={Voice} className="hidden" ref={audioRef}></audio>
-      <svg width="267.805px" height="267.805px" className="absolute -rotate-90">
+      <svg
+        width="267.805px"
+        height="267.805px"
+        className="absolute -rotate-90 md:hidden"
+      >
         <circle
           id="circle1"
           cx="133.9025px"
@@ -124,12 +132,36 @@ const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
           fill="transparent"
         ></circle>
       </svg>
-      <div className="w-[238.049px] h-[238.049px] rounded-full flex flex-col justify-center items-center relative z-10">
-        <h1 className="text-semi-grey text-[60px] font-bold tracking-[-4px]">
+      <svg
+        width="410px"
+        height="410px"
+        className="absolute -rotate-90 hidden md:block" // Show for tablet only
+      >
+        <circle
+          id="circle1"
+          cx="205px"
+          cy="205px"
+          r="185px"
+          fill="transparent"
+          stroke={color}
+          strokeWidth="20px"
+          strokeDasharray="1161px"
+          strokeDashoffset={calculateDashoffsetTablet}
+        ></circle>
+        <circle
+          id="circle4"
+          cx="205px"
+          cy="205px"
+          r="185px"
+          fill="transparent"
+        ></circle>
+      </svg>
+      <div className="w-[238.049px] md:w-[366px] h-[238.049px] md:h-[366px] rounded-full flex flex-col justify-center items-center relative z-10">
+        <h1 className="text-semi-grey text-[60px] md:text-[80px] font-bold tracking-[-4px] md:tracking-[-5px]">
           {displayTime()}
         </h1>
         <button
-          className={`text-semi-grey text-sm font-bold border-none tracking-[13.125px] ${settings.font}`}
+          className={`text-semi-grey text-sm md:mt-5 md:text-base font-bold border-none tracking-[13.125px] ${settings.font}`}
           onClick={intervalStateHandler}
         >
           {timer ? "PAUSE" : "PLAY"}

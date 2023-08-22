@@ -8,9 +8,9 @@ type PropsType = {
 
 const Panel: React.FC<PropsType> = ({ color, session, setSession }) => {
   return (
-    <div className="p-2 flex items-center rounded-[31.5px] mt-11 bg-dark-blu">
+    <div className="p-2 flex items-center rounded-[31.5px] mt-11 bg-dark-blu md:mt-14">
       <button
-        className={`border-none px-5 py-4 text-xs  font-bold bg-${
+        className={`border-none px-5 md:px-6 py-4 text-xs md:text-sm  font-bold bg-${
           session === "pomodoro"
             ? color + " text-semi-blu"
             : "transparent text-semi-grey text-opacity-40"

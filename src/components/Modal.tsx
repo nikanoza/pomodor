@@ -27,9 +27,9 @@ const Modal: React.FC<PropsType> = ({
     <div
       onClick={closeHandler}
       ref={modalRef}
-      className="w-screen h-screen absolute top-0 left-0 bg-modal flex flex-col justify-center items-center z-40"
+      className="w-screen h-screen absolute top-0 left-0 bg-modal flex flex-col justify-center items-center z-40 px-6"
     >
-      <div className="pt-9 pb-14 bg-light rounded-3xl">
+      <div className="pt-9 pb-14 w-full bg-light rounded-3xl">
         <div className="px-6 flex justify-between items-center">
           <h3 className="text-[28px] text-dark-blu font-bold">Settings</h3>
           <Close onClick={() => setShowModal((state) => !state)} />
