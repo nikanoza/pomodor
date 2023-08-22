@@ -1,27 +1,47 @@
-# React + TypeScript + Vite
+![This is header image](/public/vite.svg)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Pomodoro
 
-Currently, two official plugins are available:
+### Best App for your time management
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Table of Contents
 
-## Expanding the ESLint configuration
+- [Prerequisites](#Prerequisites)
+- [Tech Stack](#Tech-Stack)
+- [Getting Started](#Getting-Started)
+- [Project Structure](#Project-Structure)
+- [Deployment](#Deployment)
+- [Resources](#Resources)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+#
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- <img src="readme/nodejs.png" width="25" style="top: 8px" /> Node JS @18.X and up
+- <img src="readme/npm.png" width="25" style="top: 8px" /> npm @8 and up\_
+- <img src="readme/typescript.png" width="25" style="top: 8px" /> typescript @5 and up
+
+#
+
+### Tech Stack
+
+- <img src="readme/react.png" width="25" style="top: 8px" /> React @ 18.2.0 - front-end framework
+- <img src="readme/tailwind.png" width="25" style="top: 8px" /> Tailwind @3.3.3 - CSS framework
+
+#
+
+### Deployment
+
+Before every deployment you need to create build file.
+
+```
+npm run build
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+after this you can use this file to deploy project on server.
+
+#
+
+### Resources
+
+- [figma](https://www.figma.com/file/YdEMbHo1EFVswkeTMxbMUj/pomodoro-app?node-id=0%3A196&mode=dev).
