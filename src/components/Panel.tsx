@@ -23,7 +23,7 @@ const Panel: React.FC<PropsType> = ({ color, session, setSession }) => {
         className={`border-none px-5 py-4 text-xs text-semi-blu font-bold bg-${
           session === "shortBreak"
             ? color + " text-semi-blu"
-            : "transparent text-semi-grey text-opacity-40 hover:text-opacity-0"
+            : "transparent text-semi-grey text-opacity-40 hover:text-opacity-100"
         } rounded-[26.5px]`}
         onClick={() => setSession("shortBreak")}
       >
