@@ -1,35 +1,68 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SessionType, SettingsType, TimeState } from "../types";
+import Voice from "../assets/voice.mp4";
 
 type PropsType = {
   settings: SettingsType;
   session: SessionType;
+  setSession: React.Dispatch<React.SetStateAction<SessionType>>;
 };
 
-const Session: React.FC<PropsType> = ({ settings, session }) => {
+const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
   const [times, setTimes] = useState<TimeState>({
     pomodoro: settings.pomodoro * 60,
     longBreak: settings.longBreak * 60,
     shortBreak: settings.shortBreak * 60,
   });
 
+  useEffect(() => {
+    setTimes({
+      pomodoro: settings.pomodoro * 60,
+      longBreak: settings.longBreak * 60,
+      shortBreak: settings.shortBreak * 60,
+    });
+  }, [settings]);
+
   const [timer, setTimer] = useState<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const pauseTimer = () => {
+    clearInterval(timer!);
+    setTimer(null);
+  };
+
+  useEffect(() => {
+    if (timer && session !== "pomodoro" && times[session] === 0) {
+      const timeoutId = setTimeout(() => {
+        setSession("pomodoro");
+      }, 0);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [session, timer, times, setSession]);
 
   const startTimer = () => {
     const time = setInterval(() => {
       setTimes((prevTimes) => {
         const clone = { ...prevTimes };
-        clone[session] = clone[session] - 1;
+        if (clone[session] > 0) {
+          clone[session] = clone[session] - 1;
+        }
+
+        if (clone["pomodoro"] === 0) {
+          pauseTimer();
+        }
+
+        if (clone[session] <= 3) {
+          audioRef.current?.play();
+          setTimeout(() => {
+            audioRef.current?.pause();
+          }, 3000);
+        }
         return clone;
       });
     }, 1000);
 
     setTimer(time);
-  };
-
-  const pauseTimer = () => {
-    clearInterval(timer!);
-    setTimer(null);
   };
 
   useEffect(() => {
@@ -70,6 +103,7 @@ const Session: React.FC<PropsType> = ({ settings, session }) => {
 
   return (
     <div className="w-[267.805px] h-[267.805px] mt-12 rounded-full bg-dark-blu flex justify-center items-center relative">
+      <audio src={Voice} className="hidden" ref={audioRef}></audio>
       <svg width="267.805px" height="267.805px" className="absolute -rotate-90">
         <circle
           id="circle1"

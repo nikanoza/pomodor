@@ -29,7 +29,7 @@ function App() {
     >
       <Logo />
       <Panel color={settings.color} session={session} setSession={setSession} />
-      <Session settings={settings} session={session} />
+      <Session settings={settings} session={session} setSession={setSession} />
       <div className="mt-auto">
         <Settings onClick={() => setShowModal(true)} />
       </div>

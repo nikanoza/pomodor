@@ -27,7 +27,7 @@ const Modal: React.FC<PropsType> = ({
     <div
       onClick={closeHandler}
       ref={modalRef}
-      className="w-screen h-screen absolute top-0 left-0 bg-modal flex flex-col justify-center items-center"
+      className="w-screen h-screen absolute top-0 left-0 bg-modal flex flex-col justify-center items-center z-40"
     >
       <div className="pt-9 pb-14 bg-light rounded-3xl">
         <div className="px-6 flex justify-between items-center">
@@ -57,7 +57,7 @@ const Modal: React.FC<PropsType> = ({
                   />
                   <DownArrow
                     onClick={() => {
-                      if (settings.pomodoro > 25)
+                      if (settings.pomodoro > 1)
                         updateSettings("pomodoro", settings.pomodoro - 1);
                     }}
                   />
@@ -81,7 +81,7 @@ const Modal: React.FC<PropsType> = ({
                   />
                   <DownArrow
                     onClick={() => {
-                      if (settings.shortBreak > 5)
+                      if (settings.shortBreak > 1)
                         updateSettings("shortBreak", settings.shortBreak - 1);
                     }}
                   />
@@ -180,9 +180,10 @@ const Modal: React.FC<PropsType> = ({
         </div>
       </div>
       <button
+        onClick={() => setShowModal((state) => !state)}
         className={`-mt-[26px] border-none px-12 py-4 text-xs text-light font-bold bg-semi-red rounded-[26.5px] text-${settings.font}`}
       >
-        Apply
+        Return
       </button>
     </div>
   );
