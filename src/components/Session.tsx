@@ -161,7 +161,15 @@ const Session: React.FC<PropsType> = ({ settings, session, setSession }) => {
           {displayTime()}
         </h1>
         <button
-          className={`text-semi-grey text-sm md:mt-5 md:text-base font-bold border-none tracking-[13.125px] ${settings.font}`}
+          className={`text-semi-grey text-sm md:mt-5 md:text-base font-bold border-none tracking-[13.125px] ${
+            settings.font
+          } ${
+            settings.color === "semi-red"
+              ? "hover:text-semi-red"
+              : settings.color === "sky"
+              ? "hover:text-sky"
+              : "hover:text-violet"
+          }`}
           onClick={intervalStateHandler}
         >
           {timer ? "PAUSE" : "PLAY"}

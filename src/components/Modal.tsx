@@ -48,7 +48,7 @@ const Modal: React.FC<PropsType> = ({
                 <h3 className="text-sm text-semi-blu font-bold">
                   {settings.pomodoro}
                 </h3>
-                <div className="flex flex-col gap-2 mt-2">
+                <div className="flex flex-col gap-2 mt-2 cursor-pointer">
                   <UpArrow
                     onClick={() => {
                       if (settings.pomodoro < 60)
@@ -72,7 +72,7 @@ const Modal: React.FC<PropsType> = ({
                 <h3 className="text-sm text-semi-blu font-bold">
                   {settings.shortBreak}
                 </h3>
-                <div className="flex flex-col gap-2 mt-2">
+                <div className="flex flex-col gap-2 mt-2 cursor-pointer">
                   <UpArrow
                     onClick={() => {
                       if (settings.shortBreak < 10)
@@ -96,7 +96,7 @@ const Modal: React.FC<PropsType> = ({
                 <h3 className="text-sm text-semi-blu font-bold">
                   {settings.longBreak}
                 </h3>
-                <div className="flex flex-col gap-2 mt-2">
+                <div className="flex flex-col gap-2 mt-2 cursor-pointer">
                   <UpArrow
                     onClick={() => {
                       if (settings.longBreak < 15)
@@ -121,30 +121,42 @@ const Modal: React.FC<PropsType> = ({
             <div className="flex items-center gap-4 mt-4">
               <button
                 onClick={() => updateSettings("font", "kumbh")}
-                className={`border-none w-10 h-10 rounded-full text-base  font-base flex items-center justify-center kumbh ${
+                className={`w-10 h-10 rounded-full text-base  font-base flex items-center justify-center kumbh ${
                   settings.font === "kumbh"
                     ? "text-light bg-dark-blu"
                     : "text-semi-blu text-opacity-70 bg-semi-white"
+                } ${
+                  settings.font !== "kumbh"
+                    ? "hover:border-2 hover:border-dark-blu border-solid"
+                    : "border-none"
                 }`}
               >
                 Aa
               </button>
               <button
                 onClick={() => updateSettings("font", "roboto")}
-                className={`border-none w-10 h-10 rounded-full text-base  font-base flex items-center justify-center roboto ${
+                className={`w-10 h-10 rounded-full text-base  font-base flex items-center justify-center roboto ${
                   settings.font === "roboto"
                     ? "text-light bg-dark-blu"
                     : "text-semi-blu text-opacity-70 bg-semi-white"
+                } ${
+                  settings.font !== "roboto"
+                    ? "hover:border-2 hover:border-dark-blu border-solid"
+                    : "border-none"
                 }`}
               >
                 Aa
               </button>
               <button
                 onClick={() => updateSettings("font", "mono")}
-                className={`border-none w-10 h-10 rounded-full text-base  font-base flex items-center justify-center mono ${
+                className={`w-10 h-10 rounded-full text-base  font-base flex items-center justify-center mono ${
                   settings.font === "mono"
                     ? "text-light bg-dark-blu"
                     : "text-semi-blu text-opacity-70 bg-semi-white"
+                } ${
+                  settings.font !== "mono"
+                    ? "hover:border-2 hover:border-dark-blu border-solid"
+                    : "border-none"
                 }`}
               >
                 Aa

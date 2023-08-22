@@ -7,6 +7,7 @@ const Close: React.FC<SvgElementType> = ({ onClick }) => {
       width="14"
       height="14"
       onClick={onClick}
+      className="cursor-pointer"
     >
       <path
         fill="#1E213F"
